@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KawaiiNinja Dark Theme Components Preview</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #0e0e0e; /* A very dark background to match the theme */
+        color: #ffffff;
+        line-height: 1.6;
+      }
+      /* Custom scrollbar for overflow content - UPDATED */
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 6px; /* Thinner scrollbar */
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: #0e0e0e; /* Black track */
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.05); /* Thin light border */
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.1); /* Slightly visible thumb */
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.05); /* Thin light border */
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.2); /* Lighter border on hover */
+      }
+
+      /* Dark Select dropdowns */
+      select.dark-select option {
+        background-color: #0e0e0e; /* Match body background for options */
+        color: #ffffff;
+      }
+
+      /* Toggle switch exact dimensions and colors */
+      .toggle-switch-div {
+        width: 2.25rem; /* w-9 - 36px */
+        height: 0.8rem; /* h-5 - 20px */
+        background: rgba(75, 85, 99, 0.5); /* bg-gray-600/50 - OFF state */
+        border-radius: 9999px; /* rounded-full */
+        transition: background-color 0.15s ease-in-out; /* transition-colors */
+        @apply w-11 h-6 bg-gray-300 rounded-full flex items-center;
+      }
+
+      .peer:checked + .toggle-switch-div {
+        background: rgb(34, 197, 94); /* peer-checked:bg-green-500 - ON state */
+      }
+
+      /* Focus state */
+      .peer:focus + .toggle-switch-div {
+        outline: none; /* peer-focus:outline-none */
+        box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.5); /* Optional focus ring */
+      }
+
+      /* Clean Selection Cards CSS */
+      .selection-card {
+        display: flex;
+        align-items: center;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: white;
+      }
+
+      .selection-card:hover {
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .selection-card.selected {
+        border-color: #1e373c !important;
+        background: rgba(13, 55, 145, 0.175) !important;
+      }
+
+      .selection-checkbox {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+      }
+
+      .card-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+
+      .option-info h4 {
+        margin: 0 0 4px 0;
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      .option-info p {
+        margin: 0;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .option-icon {
+        font-size: 20px;
+        opacity: 0.8;
+      }
+
+      /* Mouse Bubble Notification CSS */
+      #mouse-bubble {
+        position: fixed;
+        z-index: 9999;
+        pointer-events: none;
+        padding: 4px 8px;
+        font-size: 12px;
+        border-radius: 6px;
+        background: rgba(30, 30, 30, 0.5); /* dark translucent */
+        backdrop-filter: blur(8px); /* glassmorphism */
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        transform: translate(0px, 0px) scale(0.95);
+        opacity: 0;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+      }
+    </style>
+  </head>
+  <body class="p-8">
+    <div class="max-w-4xl mx-auto space-y-8">
+      <!-- Main Container Structure -->
+      <h2 class="text-2xl font-bold text-primary mb-4">
+        Main Container Structure
+      </h2>
+      <div
+        class="card bg-transparent border border-white/5 col-span-1 sm:col-span-2 lg:col-span-4 flex flex-col flex-grow max-h-max overflow-hidden fade-in"
+      >
+        <div
+          class="relative flex-grow overflow-auto custom-scrollbar"
+          style="height: 200px"
+        >
+          <!-- Added height for scrollbar demo -->
+          <div class="p-4 space-y-6">
+            <p class="text-secondary">
+              This is an example of the primary container for full pages.
+              Content goes inside this section.
+            </p>
+            <p class="text-secondary/60">
+              It features a transparent background, subtle white border, and
+              responsive column spanning.
+            </p>
+            <p class="text-secondary">
+              Scroll down to see the new scrollbar design in action!
+            </p>
+            <p class="text-secondary">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <p class="text-secondary">
+              Curabitur pretium tincidunt lacus. Nulla gravida orci a odio.
+              Nullam varius, turpis et commodo pharetra, est eros bibendum elit,
+              nec luctus magna felis sollicitudin mauris. Integer in mauris eu
+              nibh euismod gravida. Duis ac tellus et risus auctor iaculis.
+              Pellentesque vel arcu in urna dictum adipiscing. In hac habitasse
+              platea dictumst. Vestibulum at massa ac sapien tristique aliquam.
+              Proin at elit eget est dictum gravida. Duis ac tellus et risus
+              auctor iaculis. Pellentesque vel arcu in urna dictum adipiscing.
+            </p>
+            <p class="text-secondary">
+              Donec a volutpat lectus. Sed eu eros eget elit facilisis
+              fermentum. Proin sit amet ante nec enim tincidunt fringilla. Fusce
+              at orci ac nisi tristique tincidunt. Maecenas nec tellus in ipsum
+              pellentesque volutpat. Aliquam erat volutpat. Sed eu eros eget
+              elit facilisis fermentum. Proin sit amet ante nec enim tincidunt
+              fringilla. Fusce at orci ac nisi tristique tincidunt. Maecenas nec
+              tellus in ipsum pellentesque volutpat. Aliquam erat volutpat.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section Headers -->
+      <h2 class="text-2xl font-bold text-primary mb-4 mt-8">Section Headers</h2>
+      <!-- Page header with icon and description -->
+      <div class="flex items-center mb-6">
+        <div
+          class="flex items-center justify-center w-8 h-8 bg-accent/10 rounded-md mr-3"
+        >
+          <svg
+            class="w-5 h-5 text-accent"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M17 16l-4 4m-4-4l-4 4"
+            ></path>
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-lg font-semibold text-primary">Dashboard Overview</h1>
+          <p class="text-xs text-secondary/60">
+            A quick glance at your key metrics and recent activities.
+          </p>
+        </div>
+      </div>
+
+      <!-- Section divider with colored indicator -->
+      <div class="settings-section">
+        <div class="flex items-center mb-4">
+          <div class="w-1 h-4 bg-blue-400 rounded mr-3"></div>
+          <h2 class="text-sm font-medium text-primary">General Settings</h2>
+        </div>
+        <p class="text-secondary/70">
+          Manage your account preferences and basic information here.
+        </p>
+      </div>
+
+      <!-- Content Cards -->
+      <h2 class="text-2xl font-bold text-primary mb-4 mt-8">Content Cards</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Standard content card -->
+        <div class="bg-white/[0.02] border border-white/5 rounded-lg p-4">
+          <h3 class="text-sm font-medium text-secondary mb-3">
+            Basic Information
+          </h3>
+          <p class="text-secondary/70">
+            This is a standard content card, useful for displaying static
+            information or grouped content.
+          </p>
+        </div>
+
+        <!-- Interactive content card with hover -->
+        <div
+          class="bg-white/[0.02] border border-white/5 rounded-lg p-4 hover:bg-white/[0.04] transition-colors cursor-pointer"
+        >
+          <h3 class="text-sm font-medium text-secondary mb-3">
+            Interactive Card
+          </h3>
+          <p class="text-secondary/70">
+            This card has a subtle hover effect, indicating interactivity or a
+            clickable area.
+          </p>
+        </div>
+      </div>
+
+      <!-- Form Elements -->
+      <h2 class="text-2xl font-bold text-primary mb-4 mt-8">Form Elements</h2>
+      <div class="space-y-4">
+        <!-- Input fields -->
+        <div>
+          <label for="text-input" class="block text-sm text-secondary/80 mb-1"
+            >Text Input</label
+          >
+          <input
+            id="text-input"
+            type="text"
+            placeholder="Enter your name"
+            class="w-full px-3 py-2 text-sm bg-black/5 border border-white/5 rounded text-primary/80 focus:outline-none focus:ring-2 focus:ring-accent hover:border-accent/50 transition-colors"
+          />
+        </div>
+
+        <!-- Error Input fields -->
+        <div class="space-y-1">
+          <label for="email-input" class="block text-sm text-secondary/80 mb-1"
+            >Email Address</label
+          >
+          <input
+            id="email-input"
+            type="email"
+            class="w-full px-3 py-2 text-sm bg-black/5 border border-red-400/50 rounded text-red-400 focus:outline-none focus:ring-2 focus:ring-red-400"
+            value="invalid@domain"
+          />
+          <p class="text-xs text-red-400/80">
+            Please enter a valid email address.
+          </p>
+        </div>
+
+        <!-- Dark Select dropdowns -->
+        <div>
+          <label
+            for="select-option"
+            class="block text-sm text-secondary/80 mb-1"
+            >Select Option</label
+          >
+          <select
+            id="select-option"
+            class="dark-select px-3 py-2 bg-black/5 border border-white/5 rounded text-sm text-primary focus:outline-none hover:border-accent/50 transition-colors w-full"
+          >
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </select>
+        </div>
+
+        <!-- Buttons -->
+        <div>
+          <button
+            class="px-4 py-2 bg-accent text-white rounded text-sm font-medium hover:bg-accent/80 transition-colors"
+          >
+            Submit Form
+          </button>
+        </div>
+      </div>
+
+      <!-- Stat Cards -->
+      <h2 class="text-2xl font-bold text-primary mb-4 mt-8">Stat Cards</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <!-- Total Users -->
+        <div class="bg-white/[0.02] border border-white/5 rounded-lg p-4">
+          <div class="flex items-center mb-2">
+            <div class="w-1 h-4 bg-blue-400 rounded mr-3"></div>
+            <h2 class="text-sm font-medium text-primary">Total Users</h2>
+          </div>
+          <span class="text-2xl font-bold text-accent block text-center"
+            >1,234</span
+          >
+          <div class="flex items-center justify-center mt-1 space-x-1">
+            <svg
+              class="w-3 h-3 text-red-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="3"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+            <span class="text-xs text-red-400 font-medium">−2.1%</span>
+            <span class="text-xs text-white/50">since last week</span>
+          </div>
+        </div>
+
+        <!-- Revenue -->
+        <div class="bg-white/[0.02] border border-white/5 rounded-lg p-4">
+          <div class="flex items-center mb-2">
+            <div class="w-1 h-4 bg-green-400 rounded mr-3"></div>
+            <h2 class="text-sm font-medium text-primary">Revenue</h2>
+          </div>
+          <span class="text-2xl font-bold text-accent block text-center"
+            >$56,789</span
+          >
+          <div class="flex items-center justify-center mt-1 space-x-1">
+            <svg
+              class="w-3 h-3 text-green-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="3"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M5 15l7-7 7 7"
+              />
+            </svg>
+            <span class="text-xs text-green-400 font-medium">+12.4%</span>
+            <span class="text-xs text-white/50">from last week</span>
+          </div>
+        </div>
+
+        <!-- New Orders -->
+        <div class="bg-white/[0.02] border border-white/5 rounded-lg p-4">
+          <div class="flex items-center mb-2">
+            <div class="w-1 h-4 bg-yellow-400 rounded mr-3"></div>
+            <h2 class="text-sm font-medium text-primary">New Orders</h2>
+          </div>
+          <span class="text-2xl font-bold text-accent block text-center"
+            >123</span
+          >
+          <div class="flex items-center justify-center mt-1 space-x-1">
+            <svg
+              class="w-3 h-3 text-red-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="3"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+            <span class="text-xs text-red-400 font-medium">−4.7%</span>
+            <span class="text-xs text-white/50">since yesterday</span>
+          </div>
+        </div>
+
+        <!-- Visitors (No trend) -->
+        <div class="bg-white/[0.02] border border-white/5 rounded-lg p-4">
+          <div class="flex items-center mb-2">
+            <div class="w-1 h-4 bg-indigo-400 rounded mr-3"></div>
+            <h2 class="text-sm font-medium text-primary">Visitors</h2>
+          </div>
+          <span class="text-2xl font-bold text-accent block text-center"
+            >9,876</span
+          >
+        </div>
+
+        <!-- Page Views (No trend) -->
+        <div class="bg-white/[0.02] border border-white/5 rounded-lg p-4">
+          <div class="flex items-center mb-2">
+            <div class="w-1 h-4 bg-purple-400 rounded mr-3"></div>
+            <h2 class="text-sm font-medium text-primary">Page Views</h2>
+          </div>
+          <span class="text-2xl font-bold text-accent block text-center"
+            >21,042</span
+          >
+        </div>
+
+        <!-- Subscribers (No trend) -->
+        <div class="bg-white/[0.02] border border-white/5 rounded-lg p-4">
+          <div class="flex items-center mb-2">
+            <div class="w-1 h-4 bg-pink-400 rounded mr-3"></div>
+            <h2 class="text-sm font-medium text-primary">Subscribers</h2>
+          </div>
+          <span class="text-2xl font-bold text-accent block text-center"
+            >512</span
+          >
+        </div>
+      </div>
+
+      <!-- Status Badges -->
+      <h2 class="text-2xl font-bold text-primary mb-4 mt-8">Status Badges</h2>
+      <div class="flex flex-wrap gap-2">
+        <!-- Success status -->
+        <span
+          class="px-2 py-1 rounded text-xs font-medium bg-green-400/20 text-green-400 border border-green-400/30"
+          >Completed</span
+        >
+
+        <!-- Warning status -->
+        <span
+          class="px-2 py-1 rounded text-xs font-medium bg-yellow-400/20 text-yellow-400 border border-yellow-400/30"
+          >In Progress</span
+        >
+
+        <!-- Error status -->
+        <span
+          class="px-2 py-1 rounded text-xs font-medium bg-red-400/20 text-red-400 border border-red-400/30"
+          >Failed</span
+        >
+
+        <!-- Info status (using blue for example) -->
+        <span
+          class="px-2 py-1 rounded text-xs font-medium bg-blue-400/20 text-blue-400 border border-blue-400/30"
+          >Info</span
+        >
+      </div>
+
+      <!-- Info Notes -->
+      <h2 class="text-2xl font-bold text-primary mb-4 mt-8">Info Notes</h2>
+      <!-- Info note template - Use for all helper text and informational messages -->
+      <div class="mt-4 pt-3 border-t border-white/5">
+        <div class="flex items-center text-xs text-secondary/60">
+          <svg
+            class="w-3 h-3 mr-1.5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
+          </svg>
+          Your informational message text here. This note provides helpful
+          context or instructions.
+        </div>
+      </div>
+
+      <!-- Custom Checkboxes (Random Accent Glow) -->
+      <h2 class="text-2xl font-bold text-primary mb-4 mt-8">
+        Custom Checkboxes (Random Accent Glow)
+      </h2>
+      <div class="space-y-4">
+        <label
+          class="flex items-center justify-between w-full px-2 py-2 border border-white/10 rounded-md cursor-pointer group"
+        >
+          <div class="flex items-center justify-between w-full">
+            <input
+              type="checkbox"
+              id="checkbox-email-notif"
+              class="sr-only peer"
+            />
+            <div
+              id="colorBox-email-notif"
+              class="relative w-4 h-4 rounded border border-white/10 bg-black/5 flex items-center justify-center peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-accent peer-focus:ring-offset-2 peer-focus:ring-offset-black/10 peer-checked:w-10 peer-checked:rounded-xl peer-checked:px-2 transition-all duration-300 ease-in-out"
+            >
+              <svg
+                class="h-3 w-3 text-white opacity-0 peer-checked:opacity-100 transition-opacity duration-200"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="3"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            </div>
+
+            <span class="text-sm text-primary ml-auto">
+              Email notifications for payouts
+            </span>
+          </div>
+        </label>
+
+        <label
+          class="flex items-center justify-between border border-white/10 rounded-md w-full px-2 py-2 cursor-pointer group"
+        >
+          <div class="flex items-center justify-between w-full">
+            <input
+              type="checkbox"
+              id="checkbox-sms-alerts"
+              class="sr-only peer"
+            />
+            <div
+              id="colorBox-sms-alerts"
+              class="relative w-4 h-4 rounded border border-white/10 bg-black/5 flex items-center justify-center peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-accent peer-focus:ring-offset-2 peer-focus:ring-offset-black/10 peer-checked:w-10 peer-checked:rounded-xl peer-checked:px-2 transition-all duration-300 ease-in-out"
+            >
+              <svg
+                class="h-3 w-3 text-white opacity-0 peer-checked:opacity-100 transition-opacity duration-200"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="3"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            </div>
+
+            <span class="text-sm text-primary ml-auto">
+              SMS alerts for critical errors
+            </span>
+          </div>
+        </label>
+      </div>
+
+      <!-- Toggle Switches -->
+      <h2 class="text-2xl font-bold text-primary mb-4 mt-8">Toggle Switches</h2>
+      <div class="space-y-4">
+        <!-- Compact toggle switch -->
+        <div class="flex items-center">
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input type="checkbox" id="compactToggle" class="sr-only peer" />
+            <div class="toggle-switch-div"></div>
+          </label>
+          <span class="ml-2 text-sm text-primary">Compact Toggle</span>
+        </div>
+
+        <!-- Toggle with Label Structure -->
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="font-medium text-primary">Enable Dark Mode</p>
+            <p class="text-sm text-secondary/70">
+              Switch between light and dark themes.
+            </p>
+          </div>
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input
+              type="checkbox"
+              id="featureToggle"
+              class="sr-only peer"
+              checked
+            />
+            <div class="toggle-switch-div"></div>
+          </label>
+        </div>
+
+        <!-- Disabled toggle -->
+        <div
+          class="flex items-center justify-between opacity-50 cursor-not-allowed"
+        >
+          <div>
+            <p class="font-medium text-primary">Disabled Feature</p>
+            <p class="text-sm text-secondary/70">
+              This feature is currently unavailable.
+            </p>
+          </div>
+          <label class="relative inline-flex items-center cursor-not-allowed">
+            <input type="checkbox" disabled class="sr-only peer" />
+            <div class="toggle-switch-div"></div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Clean Selection Cards -->
+      <h2 class="text-2xl font-bold text-primary mb-4 mt-8">
+        Clean Selection Cards
+      </h2>
+      <div class="selection-container space-y-3">
+        <!-- Selected card -->
+        <label class="selection-card selected" data-option="option1">
+          <input type="checkbox" checked class="selection-checkbox" />
+          <div class="card-content">
+            <div class="option-info">
+              <h4>Option Title One</h4>
+              <p>Option description or details for option one.</p>
+            </div>
+            <i class="option-icon">🎯</i>
+          </div>
+        </label>
+
+        <!-- Unselected card -->
+        <label class="selection-card" data-option="option2">
+          <input type="checkbox" class="selection-checkbox" />
+          <div class="card-content">
+            <div class="option-info">
+              <h4>Another Option</h4>
+              <p>Alternative option description for option two.</p>
+            </div>
+            <i class="option-icon">⚡</i>
+          </div>
+        </label>
+
+        <!-- Example: Payment methods -->
+        <label class="selection-card" data-payment="paypal">
+          <input type="checkbox" class="selection-checkbox" />
+          <div class="card-content">
+            <div class="option-info">
+              <h4>PayPal</h4>
+              <p>Secure online payments</p>
+            </div>
+            <i class="option-icon">💸</i>
+          </div>
+        </label>
+      </div>
+
+      <!-- Quick Analytics Cards (with Random Hover Colors) -->
+      <h2 class="text-2xl font-bold text-primary mb-4 mt-8">
+        Quick Analytics Cards
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+        <!-- Example Card 1 -->
+        <div
+          class="quick-analytics-card flex flex-col bg-black/5 border border-purple-400/20 rounded-lg p-3 transition-colors duration-300 cursor-pointer"
+        >
+          <span class="text-xs text-secondary/70 mb-1 uppercase tracking-wide"
+            >Top Category</span
+          >
+          <span class="text-base font-bold text-accent">Fashion</span>
+        </div>
+        <!-- Example Card 2 -->
+        <div
+          class="quick-analytics-card flex flex-col bg-black/5 border border-green-400/20 rounded-lg p-3 transition-colors duration-300 cursor-pointer"
+        >
+          <span class="text-xs text-secondary/70 mb-1 uppercase tracking-wide"
+            >Average Price</span
+          >
+          <span class="text-base font-bold text-green-400">₹1,299</span>
+        </div>
+        <!-- Example Card 3 -->
+        <div
+          class="quick-analytics-card flex flex-col bg-black/5 border border-blue-400/20 rounded-lg p-3 transition-colors duration-300 cursor-pointer"
+        >
+          <span class="text-xs text-secondary/70 mb-1 uppercase tracking-wide"
+            >Total Revenue</span
+          >
+          <span class="text-base font-bold text-blue-400">₹2,45,000</span>
+        </div>
+        <!-- Example Card 4 -->
+        <div
+          class="quick-analytics-card flex flex-col bg-black/5 border border-purple-400/20 rounded-lg p-3 transition-colors duration-300 cursor-pointer"
+        >
+          <span class="text-xs text-secondary/70 mb-1 uppercase tracking-wide"
+            >Best Seller</span
+          >
+          <span class="text-base font-bold text-purple-400">Sneaker X</span>
+        </div>
+      </div>
+
+      <!-- FieldGridPreview Example -->
+      <h2 class="text-2xl font-bold text-primary mb-4 mt-8">
+        Field Grid Preview
+      </h2>
+      <div
+        class="grid grid-cols-1 md:grid-cols-4 gap-2 bg-white/[0.02] border border-white/5 rounded-lg px-3 py-2"
+      >
+        <!-- Text input -->
+        <input
+          type="text"
+          placeholder="Text Field"
+          class="px-2 py-1 rounded-md bg-black/10 border border-white/10 text-primary text-xs w-full"
+        />
+        <!-- Select dropdown -->
+        <select
+          class="dark-select px-2 py-1 rounded-md bg-black/10 border border-white/10 text-primary text-xs w-full"
+        >
+          <option>Option 1</option>
+          <option>Option 2</option>
+        </select>
+        <!-- Checkbox -->
+        <div
+          class="flex items-center justify-between border border-white/10 rounded-md p-2 w-full"
+        >
+          <label
+            class="flex items-center justify-between w-full cursor-pointer group text-xs text-secondary"
+          >
+            <div class="flex items-center">
+              <input
+                type="checkbox"
+                id="fieldGridCheckbox"
+                class="sr-only peer"
+              />
+              <div
+                id="colorBox-fieldGridCheckbox"
+                class="relative w-4 h-4 rounded border border-white/10 bg-black/5 flex items-center justify-center peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-accent peer-focus:ring-offset-2 peer-focus:ring-offset-black/10 peer-checked:w-10 peer-checked:rounded-xl peer-checked:px-2 transition-all duration-300 ease-in-out"
+              >
+                <svg
+                  class="h-3 w-3 text-white opacity-0 peer-checked:opacity-100 transition-opacity duration-200"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="3"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </div>
+            </div>
+            <span>Checkbox</span>
+          </label>
+        </div>
+        <!-- Button -->
+        <button
+          type="button"
+          class="text-accent text-xs rounded-md px-2 py-1 bg-black/5 border border-white/10 w-full"
+        >
+          Action
+        </button>
+      </div>
+
+      <!-- FieldGridPreview Disabled Example -->
+      <h3 class="text-xl font-bold text-primary mb-4 mt-8">
+        Field Grid Preview (Disabled)
+      </h3>
+      <div
+        class="grid grid-cols-1 md:grid-cols-4 gap-2 bg-white/[0.02] border border-white/5 rounded-lg px-3 py-2 opacity-60 pointer-events-none"
+      >
+        <input
+          type="text"
+          placeholder="Text Field"
+          class="px-2 py-1 rounded-md bg-black/10 border border-white/10 text-primary text-xs w-full"
+          value="Sample Text"
+          disabled
+        />
+        <select
+          class="dark-select px-2 py-1 rounded-md bg-black/10 border border-white/10 text-primary text-xs w-full"
+          disabled
+        >
+          <option>Option 1</option>
+        </select>
+        <div
+          class="flex items-center justify-between border border-white/10 rounded-md p-2 w-full"
+        >
+          <label
+            class="flex items-center justify-between w-full cursor-pointer group text-xs text-secondary"
+          >
+            <div class="flex items-center">
+              <input
+                type="checkbox"
+                id="fieldGridCheckboxDisabled"
+                class="sr-only peer"
+                checked
+                disabled
+              />
+              <div
+                id="colorBox-fieldGridCheckboxDisabled"
+                class="relative w-4 h-4 rounded border border-white/10 bg-black/5 flex items-center justify-center peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-accent peer-focus:ring-offset-2 peer-focus:ring-offset-black/10 peer-checked:w-10 peer-checked:rounded-xl peer-checked:px-2 transition-all duration-300 ease-in-out"
+              >
+                <svg
+                  class="h-3 w-3 text-white opacity-0 peer-checked:opacity-100 transition-opacity duration-200"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="3"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </div>
+            </div>
+            <span>Checkbox</span>
+          </label>
+        </div>
+        <button
+          type="button"
+          class="text-accent text-xs rounded-md px-2 py-1 bg-black/5 border border-white/10 w-full"
+          disabled
+        >
+          Action
+        </button>
+      </div>
+
+      <!-- Attributes Dummy Example -->
+      <h3 class="text-xl font-bold text-primary mb-4 mt-8">
+        Attributes Dummy Example
+      </h3>
+      <div class="mb-4">
+        <label class="block text-xs font-medium text-secondary mb-2"
+          >Attributes Dummy</label
+        >
+        <div id="attributesContainerDummy" class="space-y-2">
+          <div
+            class="grid grid-cols-1 md:grid-cols-4 gap-2 bg-white/[0.02] border border-white/5 rounded-lg px-3 py-2 opacity-60 pointer-events-none"
+          >
+            <input
+              type="text"
+              placeholder="Name"
+              class="attr-name px-2 py-1 rounded-md bg-black/10 border border-white/10 text-primary text-xs w-full"
+              value="Bluetooth Version"
+              disabled
+            />
+            <input
+              type="text"
+              placeholder="Value"
+              class="attr-value px-2 py-1 rounded-md bg-black/10 border border-white/10 text-primary text-xs w-full"
+              value="5.0"
+              disabled
+            />
+            <div
+              class="flex items-center justify-between border border-white/10 rounded-md p-2 w-full"
+            >
+              <label
+                class="flex items-center justify-between w-full text-xs text-secondary"
+              >
+                <div class="flex items-center">
+                  <input
+                    type="checkbox"
+                    class="attr-display sr-only peer"
+                    checked
+                    disabled
+                  />
+                  <div
+                    id="colorBox-attrDisplay"
+                    class="relative w-4 h-4 rounded border border-white/10 bg-black/5 flex items-center justify-center peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-accent peer-focus:ring-offset-2 peer-focus:ring-offset-black/10 peer-checked:w-10 peer-checked:rounded-xl peer-checked:px-2 transition-all duration-300 ease-in-out"
+                  >
+                    <svg
+                      class="h-3 w-3 text-white opacity-0 peer-checked:opacity-100 transition-opacity duration-200"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="3"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <span>Display</span>
+              </label>
+            </div>
+            <button
+              type="button"
+              class="remove-attr-btn text-red-500 text-xs rounded-md px-2 py-1 bg-black/5 border border-white/10 w-full"
+              disabled
+            >
+              Remove
+            </button>
+          </div>
+        </div>
+        <button
+          type="button"
+          id="addAttributeBtnDummy"
+          class="mt-2 px-2 py-1 bg-accent text-white rounded text-xs"
+        >
+          Add Attribute
+        </button>
+        <input
+          type="hidden"
+          id="productAttributesDummy"
+          name="productAttributesDummy"
+        />
+      </div>
+    </div>
+
+    <!-- JavaScript for Custom Checkboxes -->
+    <script>
+      const checkboxColorCombos = [
+        { boxId: "colorBox-email-notif", checkId: "checkbox-email-notif" },
+        { boxId: "colorBox-sms-alerts", checkId: "checkbox-sms-alerts" },
+        { boxId: "colorBox-fieldGridCheckbox", checkId: "fieldGridCheckbox" }, // New checkbox
+        {
+          boxId: "colorBox-fieldGridCheckboxDisabled",
+          checkId: "fieldGridCheckboxDisabled",
+        }, // New disabled checkbox
+        { boxId: "colorBox-attrDisplay", checkId: "attr-display" }, // New dummy attribute checkbox
+      ];
+
+      checkboxColorCombos.forEach(({ boxId, checkId }) => {
+        const checkbox = document.getElementById(checkId);
+        const box = document.getElementById(boxId);
+
+        if (!checkbox || !box) {
+          console.warn(`Missing checkbox or box for: ${checkId}, ${boxId}`);
+          return;
+        }
+
+        const applyRandomColor = () => {
+          if (checkbox.checked) {
+            const hue = Math.floor(Math.random() * 360);
+            const color = `hsl(${hue}, 90%, 60%)`; // Neon style
+            box.style.backgroundColor = color;
+            box.style.borderColor = color;
+          } else {
+            box.style.backgroundColor = "rgba(0,0,0,0.05)";
+            box.style.borderColor = "rgba(255,255,255,0.1)";
+          }
+        };
+
+        checkbox.addEventListener("change", applyRandomColor);
+        applyRandomColor(); // Apply on page load
+      });
+
+      // JavaScript for Clean Selection Cards
+      document.querySelectorAll(".selection-card").forEach((card) => {
+        const checkbox = card.querySelector(".selection-checkbox");
+
+        if (checkbox.checked) card.classList.add("selected");
+
+        card.addEventListener("click", function (e) {
+          // Prevent event from bubbling if the actual checkbox was clicked
+          if (e.target === checkbox) {
+            // For radio buttons, ensure only one is selected
+            if (checkbox.type === "radio" && checkbox.checked) {
+              document
+                .querySelectorAll(`input[name="${checkbox.name}"]`)
+                .forEach((otherRadio) => {
+                  if (otherRadio !== checkbox) {
+                    otherRadio.checked = false;
+                    otherRadio
+                      .closest(".selection-card")
+                      .classList.remove("selected");
+                  }
+                });
+            }
+            card.classList.toggle("selected", checkbox.checked);
+            return;
+          }
+
+          // If clicking the label, toggle the checkbox and update class
+          checkbox.checked = !checkbox.checked;
+          // For radio buttons, ensure only one is selected
+          if (checkbox.type === "radio" && checkbox.checked) {
+            document
+              .querySelectorAll(`input[name="${checkbox.name}"]`)
+              .forEach((otherRadio) => {
+                if (otherRadio !== checkbox) {
+                  otherRadio.checked = false;
+                  otherRadio
+                    .closest(".selection-card")
+                    .classList.remove("selected");
+                }
+              });
+          }
+          card.classList.toggle("selected", checkbox.checked);
+        });
+      });
+
+      // Random hover color effect for quick analytics cards
+      const quickAnalyticsCards = document.querySelectorAll(
+        ".quick-analytics-card"
+      );
+      const hoverColors = [
+        "rgba(139, 92, 246, 0.18)", // purple
+        "rgba(34, 197, 94, 0.18)", // green
+        "rgba(59, 130, 246, 0.18)", // blue
+        "rgba(6, 182, 212, 0.18)", // cyan
+        "rgba(251, 191, 36, 0.18)", // yellow
+        "rgba(239, 68, 68, 0.18)", // red
+        "rgba(168, 85, 247, 0.18)", // violet
+        "rgba(236, 72, 153, 0.18)", // pink
+      ];
+      quickAnalyticsCards.forEach((card) => {
+        card.addEventListener("mouseenter", () => {
+          const color =
+            hoverColors[Math.floor(Math.random() * hoverColors.length)];
+          card.style.backgroundColor = color;
+        });
+        card.addEventListener("mouseleave", () => {
+          card.style.backgroundColor = ""; // Reset to original background
+        });
+      });
+
+      // Mouse Bubble Notification (basic implementation for demonstration)
+      const mouseBubble = document.createElement("div");
+      mouseBubble.id = "mouse-bubble";
+      document.body.appendChild(mouseBubble);
+
+      document.addEventListener("mousemove", (e) => {
+        mouseBubble.style.left = `${e.clientX + 15}px`; // Offset from cursor
+        mouseBubble.style.top = `${e.clientY + 15}px`;
+      });
+
+      // Example to show/hide bubble (you'd integrate this with actual events)
+      // For demonstration, let's make it appear on hover over the "Submit Form" button
+      const submitButton = document.querySelector("button.bg-accent");
+      if (submitButton) {
+        submitButton.addEventListener("mouseenter", () => {
+          mouseBubble.textContent = "Click to submit!";
+          mouseBubble.style.opacity = "1";
+          mouseBubble.style.transform = "translate(0px, 0px) scale(1)";
+        });
+        submitButton.addEventListener("mouseleave", () => {
+          mouseBubble.style.opacity = "0";
+          mouseBubble.style.transform = "translate(0px, 0px) scale(0.95)";
+        });
+      }
+    </script>
+  </body>
+</html>

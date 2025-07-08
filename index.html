@@ -4,55 +4,93 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KAWAIININJA UI Kits</title>
-    <link rel="stylesheet" href="style.css" />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #0e0e0e; /* A very dark background to match the theme */
+        color: #ffffff;
+        line-height: 1.6;
+      }
+      /* Custom scrollbar for overflow content */
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 6px; /* Thinner scrollbar */
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: #0e0e0e; /* Black track */
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.05); /* Thin light border */
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.1); /* Slightly visible thumb */
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.05); /* Thin light border */
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.2); /* Lighter border on hover */
+      }
+
+      /* Dark Select dropdowns */
+      select.dark-select option {
+        background-color: #0e0e0e; /* Match body background for options */
+        color: #ffffff;
+      }
+
+      /* Toggle switch exact dimensions and colors */
+      .toggle-switch-div {
+        width: 2.25rem; /* w-9 - 36px */
+        height: 1.25rem; /* h-5 - 20px */
+        background: rgba(75, 85, 99, 0.5); /* bg-gray-600/50 - OFF state */
+        border-radius: 9999px; /* rounded-full */
+        transition: background-color 0.15s ease-in-out; /* transition-colors */
+      }
+
+      .peer:checked + .toggle-switch-div {
+        background: rgb(34, 197, 94); /* peer-checked:bg-green-500 - ON state */
+      }
+
+      /* Focus state */
+      .peer:focus + .toggle-switch-div {
+        outline: none; /* peer-focus:outline-none */
+        box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.5); /* Optional focus ring */
+      }
+    </style>
   </head>
-  <body>
-    <div class="container">
+  <body class="bg-[#0e0e0e] text-white font-inter">
+    <!-- Chosen Palette: Kuro - Dark Theme (Japanese-inspired, matches anime aesthetic) -->
+    <!-- Application Structure Plan: This SPA is designed as a focused product showcase for a single UI Kit. It uses a linear, scrollable layout with a main header that incorporates the theme's section header style, followed by the single UI kit product card, and a footer with contact information. This structure prioritizes direct presentation of the product for purchase, minimizing distractions and providing clear calls to action. -->
+    <!-- Visualization & Content Choices:
+    - Header: Textual content (title, description) - Goal: Inform - Presentation: HTML text with a colored indicator bar (matching theme's section header style) - Interaction: None - Justification: Provides a prominent and themed introduction to the page.
+    - UI Kit Card: Qualitative insights (product description), textual content (features), external link - Goal: Inform/Showcase - Presentation: Content Card (HTML/Tailwind) with the specific product image - Interaction: Clickable link to Gumroad - Justification: Directly presents the product with its details and a clear purchase option. Uses the provided image URL.
+    - Footer: Textual content (copyright, contact email) - Goal: Inform - Presentation: HTML text with an email link - Interaction: Email link - Justification: Standard legal/branding and direct contact information.
+    CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <div class="max-w-4xl mx-auto p-6">
       <!-- Header -->
       <div class="p-6 mb-6">
-        <h1 class="text-3xl font-bold text-primary mb-4">
-          KAWAIININJA UI Kits
-        </h1>
-        <p class="text-secondary/70">Premium dark theme components</p>
+        <div class="flex items-center mb-4">
+          <div class="w-1 h-4 bg-cyan-400 rounded mr-3"></div>
+          <h1 class="text-3xl font-bold text-primary">KAWAIININJA UI Kits</h1>
+        </div>
+        <p class="text-secondary/70 ml-4">Premium dark theme components</p>
       </div>
 
-      <!-- Stats -->
-      <div class="grid grid-cols-3 gap-4 mb-6">
-        <div class="stat-card">
-          <span class="stat-number">1</span>
-          <span class="stat-label">UI Kit</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-number">Premium</span>
-          <span class="stat-label">Quality</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-number">Modern</span>
-          <span class="stat-label">Design</span>
-        </div>
-      </div>
-
-      <!-- Section Header -->
-      <div class="section-header">
-        <div class="section-indicator bg-cyan-400"></div>
-        <h2 class="section-title">Available UI Kit</h2>
-      </div>
-
-      <!-- UI Kits Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-        <!-- UI Notification System -->
-        <div class="content-card">
+      <!-- UI Kits Grid - Now with only one product -->
+      <div class="grid grid-cols-1 gap-4 mb-6">
+        <!-- UI Notification System Product Card -->
+        <div class="bg-white/[0.02] border border-white/5 rounded-lg p-4">
           <div class="mb-4">
             <img
               src="./ui/ui-notification-system.png"
               alt="UI Notification System"
-              style="
-                width: 100%;
-                height: 500px;
-                object-fit: cover;
-                border-radius: 4px;
-                background: rgba(255, 255, 255, 0.02);
-              "
+              class="w-full h-auto object-cover rounded-md bg-white/[0.02]"
+              onerror="this.onerror=null;this.src='https://placehold.co/600x400/0e0e0e/ffffff?text=Image+Not+Found';"
             />
           </div>
           <h3 class="text-lg font-semibold text-primary mb-2">
@@ -64,34 +102,34 @@
           </p>
           <div class="flex space-x-2 mb-4">
             <span
-              class="text-xs bg-black/10 border-white/10 px-2 py-1"
-              style="
-                border: 1px solid rgba(255, 255, 255, 0.1);
-                border-radius: 4px;
-              "
+              class="px-2 py-1 rounded text-xs font-medium bg-black/10 border border-white/10"
               >Toast Messages</span
             >
             <span
-              class="text-xs bg-black/10 border-white/10 px-2 py-1"
-              style="
-                border: 1px solid rgba(255, 255, 255, 0.1);
-                border-radius: 4px;
-              "
+              class="px-2 py-1 rounded text-xs font-medium bg-black/10 border border-white/10"
               >Dark Theme</span
             >
           </div>
           <a
             href="https://kawaiininja4.gumroad.com/l/ui-notification-system?utm_source=github&utm_medium=email&utm_campaign=kawaiininja-ui&utm_term=ui-kit"
-            class="btn-accent"
+            class="px-4 py-2 bg-accent text-white rounded text-sm font-medium hover:bg-accent/80 transition-colors inline-block w-full text-center"
             >Buy on Gumroad</a
           >
         </div>
       </div>
 
       <!-- Footer -->
-      <div class="p-6 border-t" style="border-color: rgba(255, 255, 255, 0.05)">
-        <p class="text-secondary/60 text-center">
+      <div class="p-6 border-t border-white/5 mt-8">
+        <p class="text-secondary/60 text-center mb-2">
           © KAWAIININJA — Built with love 🖤
+        </p>
+        <p class="text-secondary/60 text-center">
+          Contact:
+          <a
+            href="mailto:dev.kawaiininja@gmail.com"
+            class="text-accent hover:underline"
+            >dev.kawaiininja@gmail.com</a
+          >
         </p>
       </div>
     </div>
