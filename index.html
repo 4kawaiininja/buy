@@ -72,13 +72,37 @@
     - Footer: Textual content (copyright, contact email) - Goal: Inform - Presentation: HTML text with an email link - Interaction: Email link - Justification: Standard legal/branding and direct contact information.
     CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <div class="max-w-4xl mx-auto p-6">
-      <!-- Header -->
-      <div class="p-6 mb-6">
-        <div class="flex items-center mb-4">
-          <div class="w-1 h-4 bg-cyan-400 rounded mr-3"></div>
-          <h1 class="text-3xl font-bold text-primary">KAWAIININJA UI Kits</h1>
+      <!-- Header - Refactored to match "Page header with icon and description" -->
+      <div class="flex items-center mb-6">
+        <div
+          class="flex items-center justify-center w-8 h-8 bg-accent/10 rounded-md mr-3"
+        >
+          <!-- SVG Icon for the main header -->
+          <svg
+            class="w-5 h-5 text-accent"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M17 16l-4 4m-4-4l-4 4"
+            ></path>
+          </svg>
         </div>
-        <p class="text-secondary/70 ml-4">Premium dark theme components</p>
+        <div>
+          <h1 class="text-3xl font-bold text-primary">KAWAIININJA UI Kits</h1>
+          <p class="text-xs text-secondary/60">Premium dark theme components</p>
+        </div>
+      </div>
+
+      <!-- Section Header for Products (kept for consistency with theme docs) -->
+      <div class="flex items-center mb-4 mt-8">
+        <div class="w-1 h-4 bg-cyan-400 rounded mr-3"></div>
+        <h2 class="text-sm font-medium text-primary">Available UI Kit</h2>
       </div>
 
       <!-- UI Kits Grid - Now with only one product -->
@@ -111,7 +135,7 @@
             >
           </div>
           <a
-            href="https://kawaiininja4.gumroad.com/l/ui-notification-system?utm_source=github&utm_medium=email&utm_campaign=kawaiininja-ui&utm_term=ui-kit"
+            href="https://gum.co/u/s1nsdxzb"
             class="px-4 py-2 bg-accent text-white rounded text-sm font-medium hover:bg-accent/80 transition-colors inline-block w-full text-center"
             >Buy on Gumroad</a
           >
